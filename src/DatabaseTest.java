@@ -1,25 +1,25 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DatabaseTest {
 
     public static void main(String[] args) {
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library", "root", "Procrastinante42")) {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root","Procrastinante42")) {
 
-            // Query data from the 'books' table
-            String query = "SELECT * FROM authors";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(query);
-                 ResultSet resultSet = preparedStatement.executeQuery()) {
+            // Insert data into the 'authors' table
+            String insertQuery = "INSERT INTO authors (nam, birth) VALUES (?, ?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
 
-                while (resultSet.next()) {
-                    int id = resultSet.getInt("id");
-                    String name = resultSet.getString("nam");
-                    String birth = resultSet.getString("birth");
-                    System.out.println("ID: " + id + ", Name: " + name + ", Birth: " + birth);
-                }
+                // Set values for the parameters
+                preparedStatement.setString(1, "James Stweart");
+                preparedStatement.setString(2, "1987-06-13");
+
+                // Execute the insert query
+                int rowsAffected = preparedStatement.executeUpdate();
+                System.out.println(rowsAffected + " row(s) inserted.");
+
             }
 
         } catch (SQLException e) {
