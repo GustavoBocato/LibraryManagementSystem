@@ -1,3 +1,6 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -27,9 +30,25 @@ public class Main {
 
         }
 
-        System.out.println("Faça login na base de dados.");
-        System.out.println("Entre o seu usuário:");
-        System.out.println("Entre a senha do usuário:");
+        String url = propriedadesDoArquivo.getProperty("database.url");
+        String user = propriedadesDoArquivo.getProperty("database.user");
+        String password = propriedadesDoArquivo.getProperty("database.password");
+
+        try {
+
+            // Establish a connection
+            Connection connection = DriverManager.getConnection(url, user, password);
+
+
+
+            // Close the connection when done
+            connection.close();
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
         
     }
 
