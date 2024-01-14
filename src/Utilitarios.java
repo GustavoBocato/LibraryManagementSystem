@@ -57,5 +57,13 @@ public class Utilitarios {
 
     }
 
+    public static void criarArquivoFlagDasTabelas() {
+        try {
+            File file = new File("tabelas_criadas.flag");
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
