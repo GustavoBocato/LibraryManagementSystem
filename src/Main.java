@@ -8,6 +8,7 @@ import java.sql.Statement;
 public class Main {
     public static void main(String[] args) {
 
+        // configurando um arquivo para armazenar as informações de conexão com o banco de dados MySQL
         String localDoArquivoDeConexao = "conexao";
 
         Properties propriedadesDoArquivo = Utilitarios.lePropriedadesDoArquvio(localDoArquivoDeConexao);
@@ -16,6 +17,7 @@ public class Main {
 
         if(!propriedadesDoArquivo.isEmpty()){
 
+            // se o arquivo de conexão já está preenchido dar opção para o usuário trocar de conexão
             System.out.println("Quer se conectar com a mesma base de dados da última vez?");
             System.out.println("0 - Não");
             System.out.println("1 - Sim");
@@ -50,6 +52,7 @@ public class Main {
 
             if(!Utilitarios.existeArquivoFlagDasTabelas()){
 
+                // se for a primeira vez conectando com o banco de dados, então o arquivo flag não existe ainda e se deve criar a base de dados
                 Statement statement = connection.createStatement();
 
                 String[] comandosDeCriacaoDeTabelas = {"create database livraria;",
@@ -178,12 +181,14 @@ public class Main {
 
             }
 
+            //
+
             // Close the connection when done
             connection.close();
 
         } catch (SQLException e) {
 
-            System.out.println("Conexão com base de dados não foi possível.");
+            e.printStackTrace();
 
         }
 
