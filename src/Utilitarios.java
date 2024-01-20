@@ -1,6 +1,10 @@
 import java.io.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 import java.util.Scanner;
+import java.sql.ResultSet;
 
 public class Utilitarios {
 
@@ -64,6 +68,16 @@ public class Utilitarios {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static int numeroDeEntradasEmUmaTabela(String nomeDaTabela, Connection connection) throws SQLException {
+
+        Statement statement = connection.createStatement();
+
+        ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM " + nomeDaTabela + ";");
+
+        return resultSet.getInt(1);
+
     }
 
 }

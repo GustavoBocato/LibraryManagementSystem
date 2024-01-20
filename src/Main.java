@@ -181,7 +181,13 @@ public class Main {
 
             }
 
-            //
+            // checar se já existem administradores registrados
+
+            if(Utilitarios.numeroDeEntradasEmUmaTabela("administradores", connection) == 0){
+
+                // registrar um administrador
+
+            }
 
             // Close the connection when done
             connection.close();
