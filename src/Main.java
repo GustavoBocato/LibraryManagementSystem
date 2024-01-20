@@ -56,7 +56,6 @@ public class Main {
                 Statement statement = connection.createStatement();
 
                 String[] comandosDeCriacaoDeTabelas = {"create database livraria;",
-                        "use livraria;",
                         "create table autores(\n" +
                                 "\n" +
                                 "\tid int auto_increment,\n" +
@@ -180,6 +179,11 @@ public class Main {
                 Utilitarios.criarArquivoFlagDasTabelas();
 
             }
+
+            // selecionar a base de dados livraria
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("use livraria;");
+            statement.close();
 
             // checar se já existem administradores registrados
 

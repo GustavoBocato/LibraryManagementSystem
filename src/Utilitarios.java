@@ -76,6 +76,8 @@ public class Utilitarios {
 
         ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM " + nomeDaTabela + ";");
 
+        resultSet.next();
+
         return resultSet.getInt(1);
 
     }
