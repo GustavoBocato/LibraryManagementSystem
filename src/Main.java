@@ -189,7 +189,10 @@ public class Main {
 
             if(Utilitarios.numeroDeEntradasEmUmaTabela("administradores", connection) == 0){
 
+                System.out.println("Nenhum administrador foi registrado ainda. Registre um.");
+
                 // registrar um administrador
+
 
             }
 
