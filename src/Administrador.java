@@ -1,14 +1,13 @@
-import java.util.Date;
 
 public class Administrador {
 
     private String login;
     private String senha;
     private String nome;
-    private Date nascimento;
+    private String nascimento;
     private String cpf;
 
-    public void Administrador(String login, String senha, String nome, Date nascimento, String cpf) throws IllegalArgumentException {
+    public void Administrador(String login, String senha, String nome, String nascimento, String cpf) throws IllegalArgumentException {
 
         if(login.length() > 50){
 
@@ -34,12 +33,33 @@ public class Administrador {
 
         }
 
+        // checar a data de nascimento
+
         this.login = login;
         this.nome = nome;
         this.cpf = cpf;
         this.senha = senha;
-        this.nascimento = nascimento;
 
+    }
+
+    public String getNascimento() {
+        return nascimento;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getSenha() {
+        return senha;
     }
 
 }
