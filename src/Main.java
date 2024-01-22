@@ -198,8 +198,31 @@ public class Main {
 
             // menu de login
 
-            System.out.println("Você quer logar como: 1 - Cliente, 2 - Funcionário ou 3 - Administrador? Entre um número.");
+            int i;
 
+            do {
+
+                System.out.println("Você quer logar como: 1 - Cliente, 2 - Funcionário ou 3 - Administrador? Entre um dos números citados.");
+
+                Scanner sc = new Scanner(System.in);
+
+                i = sc.nextInt();
+
+            } while(i != 1 && i != 2 && i != 3);
+
+            if(i == 1){
+
+                // chamar um método de login como cliente
+
+            } else if (i == 2) {
+
+                // chamar um método de login como funcionário
+
+            } else {
+
+                // chamar um método de login como administrador
+
+            }
 
             // Close the connection when done
             connection.close();
