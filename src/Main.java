@@ -192,9 +192,14 @@ public class Main {
                 System.out.println("Nenhum administrador foi registrado ainda. Registre um.");
 
                 // registrar um administrador
-
+                Utilitarios.criaAdministrador(connection);
 
             }
+
+            // menu de login
+
+            System.out.println("Você quer logar como: 1 - Cliente, 2 - Funcionário ou 3 - Administrador? Entre um número.");
+
 
             // Close the connection when done
             connection.close();
