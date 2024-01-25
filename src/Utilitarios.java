@@ -70,18 +70,6 @@ public class Utilitarios {
         }
     }
 
-    public static int numeroDeEntradasEmUmaTabela(String nomeDaTabela, Connection connection) throws SQLException {
-
-        Statement statement = connection.createStatement();
-
-        ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM " + nomeDaTabela + ";");
-
-        resultSet.next();
-
-        return resultSet.getInt(1);
-
-    }
-
     public static boolean dataEmFormatoMySQL(String data){
 
         char[] dataArray = data.toCharArray();
@@ -163,51 +151,4 @@ public class Utilitarios {
         return true;
 
     }
-
-    public static void criaAdministrador(Connection connection) throws SQLException {
-
-        String nome;
-        String login;
-        String senha;
-        String cpf;
-        String nascimento;
-
-        do {
-
-            Scanner sc = new Scanner(System.in);
-
-            System.out.println("Entre o nome do administrador (deve ter no máximo 100 caracteres).");
-
-            nome = sc.next();
-
-            System.out.println("Entre o login do administrador (deve ter no máximo 50 caracteres).");
-
-            login = sc.next();
-
-            System.out.println("Entre a senha do administrador (deve ter no máximo 50 caracteres).");
-
-            senha = sc.next();
-
-            System.out.println("Entre o cpf do administrador (deve ter exatamente 11 digitos, não use hifen ou ponto).");
-
-            cpf = sc.next();
-
-            System.out.println("Entre a data de nascimento do administrador no formato AAAA-MM-DD.");
-
-            nascimento = sc.next();
-
-        } while(inputDeAdministradorCorreto(login, senha, nome, cpf, nascimento));
-
-        Statement statement = connection.createStatement();
-
-        String comandoMySQL = "INSERT INTO Administradores (login, senha, nome, nascimento, cpf) VALUES (" + login + ", " + senha + ", " + nome + "," +
-                " " + nascimento + ", " + cpf + ")";
-
-        statement.executeUpdate(comandoMySQL);
-        statement.close();
-
-    }
-
-
-
 }
